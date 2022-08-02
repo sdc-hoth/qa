@@ -3,3 +3,11 @@ answers_photos.csv
 answers.csv
 
 questions.csv
+
+APIs.text
+
+node_modules/
+
+Ignoremodels/
+
+Ignorecontrollers/

@@ -13,7 +13,7 @@ CREATE TABLE questions (
   date_written VARCHAR(255),
   asker_name VARCHAR(255),
   asker_email VARCHAR(255),
-  reported INT DEFAULT 0,
+  reported BOOLEAN,
   helpful INT
 );
 
@@ -25,7 +25,7 @@ CREATE TABLE answers (
   date_written VARCHAR(255),
   answerer_name VARCHAR(255),
   answerer_email VARCHAR(255),
-  reported INT DEFAULT 0,
+  reported BOOLEAN,
   helpful INT
 );
 
