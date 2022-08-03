@@ -84,18 +84,20 @@ VALUES (body, name, email, product_id)
 
 
 -- ***************  POST /qa/questions/:question_id/answers ***************
-INSERT INTO answers (body, answerer_name, answerer_email, question_id)
-VALUES ('${body}', '${name}', '${email}', '${question_id}')
-RETURNING answer_id
 
--- SELECT currval('answers_id_seq')
--- DECLARE @id INT = (SELECT LAST_INSERT_ID())
+--------------------------------------------------
+-- INSERT INTO answers (body, answerer_name, answerer_email, question_id)
+-- VALUES ('${body}', '${name}', '${email}', '${question_id}')
+-- RETURNING answer_id
 
-INSERT INTO photos (answer_id, url) --need to insert multiple photos (for loop each insert?)
-VALUES
-    ('${answer_id}', '${url}'),
-    ('${answer_id}', '${url}'),
-    ('${answer_id}', '${url}');
+-- -- SELECT currval('answers_id_seq')
+-- -- DECLARE @id INT = (SELECT LAST_INSERT_ID())
+
+-- INSERT INTO photos (answer_id, url) --need to insert multiple photos (for loop each insert?)
+-- VALUES
+--     ('${answer_id}', '${url}'),
+--     ('${answer_id}', '${url}'),
+--     ('${answer_id}', '${url}');
 
 -- ***************  PUT /qa/questions/:question_id/helpful ***************
 DO $$
@@ -132,3 +134,27 @@ END $$
 UPDATE answers
 SET reported = true
 WHERE answer_id = ${answer_id};
+
+
+
+
+
+FOR LOOP INSERT photos
+--------
+INSERT INTO answers (body, answerer_name, answerer_email, question_id)
+VALUES (${body}, ${name}, ${email}, ${question_id});
+
+DO $$
+    DECLARE
+        id integer := (SELECT max(answer_id) from answers);
+BEGIN
+   INSERT INTO photos (answer_id, url)
+     SELECT id, v
+     FROM jsonb_array_elements_text(CAST(${photos} as jsonb)) as t(v);
+END $$;
+
+
+------ADD INDEX TO TABLES
+
+CREATE INDEX product_id-idx 
+ON questions(product_id)

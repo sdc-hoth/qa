@@ -135,3 +135,19 @@ END $$`;
   },
 
 }
+
+
+
+// const queryString = `INSERT INTO answers (body, answerer_name, answerer_email, question_id)
+//     VALUES (${body}, ${name}, ${email}, ${question_id});
+
+//     DO $$
+//         DECLARE
+//             id integer := (SELECT max(answer_id) from answers);
+//     BEGIN
+//         Raise notice id;
+//         Raise notice photo_array;
+//        INSERT INTO photos (answer_id, url)
+//          SELECT id, v
+//          FROM json_array_elements_text(ARRAY[${photos}]) as t(v);
+//     END $$;`

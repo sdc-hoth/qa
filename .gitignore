@@ -11,3 +11,7 @@ node_modules/
 Ignoremodels/
 
 Ignorecontrollers/
+
+newrelic.js
+
+newrelic_agent.log
