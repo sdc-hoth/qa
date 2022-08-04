@@ -19,8 +19,14 @@ app.use((req, res, next) => {
   next();
 });
 app.options('*', cors());
-// app.use('/qa', router);
 
+app.get('/loaderio-10d998622bb090eddc7c1777abbd277c.txt', async (req, res) => {
+  try {
+    res.status(200).sendFile(path.join(__dirname, 'loaderio-10d998622bb090eddc7c1777abbd277c.txt'))
+  } catch(e) {
+    console.log('errrrrr', e);
+  }
+})
 
 app.get('/qa/questions/:product_id', async(req, res) => {
   const { product_id } = req.params;
@@ -28,7 +34,7 @@ app.get('/qa/questions/:product_id', async(req, res) => {
   try {
     const data = await getQuestions(product_id);
     res.send(data.rows[0].data);
-  } catch {
+  } catch(e) {
     res.sendStatus(404);
   }
 })
@@ -39,7 +45,7 @@ app.get('/qa/questions/:question_id/answers', async (req, res) => {
   try {
     const data = await getAnswersForQ(question_id, page, count);
     res.send(data.rows[0].data);
-  } catch {
+  } catch(e) {
     res.sendStatus(404);
   }
 });
@@ -50,7 +56,7 @@ app.post('/qa/questions/:product_id', async (req, res) => {
   try {
     await postQuestion(body, name, email, product_id);
     res.sendStatus(201);
-  } catch {
+  } catch(e) {
     res.sendStatus(501);
   }
 });
@@ -66,7 +72,7 @@ app.post('/qa/questions/:question_id/answers', async (req, res) => {
       await postPhotos(answer_id, p)
     }
     res.sendStatus(201);
-  } catch {
+  } catch(e) {
     res.sendStatus(501);
   }
 });
@@ -76,7 +82,7 @@ app.put('/qa/questions/:question_id/helpful', async (req, res) => {
   try {
     await updateQHelpful(question_id);
     res.sendStatus(200);
-  } catch {
+  } catch(e) {
     res.sendStatus(204);
   }
 });
@@ -87,7 +93,7 @@ app.put('/qa/questions/:question_id/report', async (req, res) => {
   try {
     await reportQuestion(question_id);
     res.sendStatus(200);
-  } catch {
+  } catch(e) {
     res.sendStatus(204);
   }
 });
@@ -97,7 +103,7 @@ app.put('/qa/answers/:answer_id/helpful', async (req, res) => {
   try {
     await updateAHelpful(answer_id);
     res.sendStatus(200);
-  } catch {
+  } catch(e) {
     res.sendStatus(204);
   }
 });
@@ -107,7 +113,7 @@ app.put('/qa/answers/:answer_id/report', async (req, res) => {
   try {
     await reportAnswer(answer_id);
     res.sendStatus(200);
-  } catch {
+  } catch(e) {
     res.sendStatus(204);
   }
 })
