@@ -17,3 +17,5 @@ qa.pem
 stressTest.js
 
 .DS_Store
+
+.env

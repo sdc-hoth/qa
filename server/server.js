@@ -1,4 +1,5 @@
 require('newrelic');
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -9,7 +10,7 @@ const { getAnswersForQ, getQuestions, postQuestion, postAnswer, postPhotos, upda
 const app = express();
 module.exports.app = app;
 
-app.set('port', 3000);
+app.set('port', process.env.PORT);
 app.use(morgan('dev'));
 app.use(express.json());
 
