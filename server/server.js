@@ -2,7 +2,7 @@ require('newrelic');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-// var morgan = require('morgan');
+var morgan = require('morgan');
 // const router = require('./router.js');
 const { getAnswersForQ, getQuestions, postQuestion, postAnswer, postPhotos, updateQHelpful, reportQuestion, updateAHelpful, reportAnswer } = require('./models');
 
@@ -10,7 +10,7 @@ const app = express();
 module.exports.app = app;
 
 app.set('port', 3000);
-// app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.use((req, res, next) => {

@@ -3,7 +3,7 @@ const client = require('./db.js');
 module.exports = {
   getQuestions: function (product_id, page=0, count=5) {
     const queryString = `SELECT json_build_object(
-      'product_id', ${product_id},
+     'product_id', ${product_id},
       'results',
       (SELECT json_agg(qap)
       FROM (

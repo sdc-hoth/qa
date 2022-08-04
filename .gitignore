@@ -1,8 +1,4 @@
-answers_photos.csv
-
-answers.csv
-
-questions.csv
+Data/
 
 APIs.text
 
@@ -15,3 +11,9 @@ Ignorecontrollers/
 newrelic.js
 
 newrelic_agent.log
+
+qa.pem
+
+stressTest.js
+
+.DS_Store
