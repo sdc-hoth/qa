@@ -22,7 +22,7 @@ app.options('*', cors());
 
 app.get('/loaderio-e95cc048ed6c65972bc72918f4e77489.txt', async (req, res) => {
   try {
-    res.status(200).sendFile(path.join(__dirname, 'loaderio-e95cc048ed6c65972bc72918f4e77489.txt'))
+    res.status(200).send('loaderio-e95cc048ed6c65972bc72918f4e77489');
   } catch(e) {
     console.log('errrrrr', e);
   }
