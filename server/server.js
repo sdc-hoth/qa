@@ -1,9 +1,9 @@
-require('newrelic');
+// require('newrelic');
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-var morgan = require('morgan');
+// var morgan = require('morgan');
 // const router = require('./router.js');
 const { getAnswersForQ, getQuestions, postQuestion, postAnswer, postPhotos, updateQHelpful, reportQuestion, updateAHelpful, reportAnswer } = require('./models');
 
