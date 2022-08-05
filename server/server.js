@@ -11,7 +11,7 @@ const app = express();
 module.exports.app = app;
 
 app.set('port', process.env.PORT);
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.json());
 
 app.use((req, res, next) => {
