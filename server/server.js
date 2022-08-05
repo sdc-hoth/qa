@@ -20,9 +20,9 @@ app.use((req, res, next) => {
 });
 app.options('*', cors());
 
-app.get('/loaderio-10d998622bb090eddc7c1777abbd277c.txt', async (req, res) => {
+app.get('/loaderio-e95cc048ed6c65972bc72918f4e77489.txt', async (req, res) => {
   try {
-    res.status(200).sendFile(path.join(__dirname, 'loaderio-10d998622bb090eddc7c1777abbd277c.txt'))
+    res.status(200).sendFile(path.join(__dirname, 'loaderio-e95cc048ed6c65972bc72918f4e77489.txt'))
   } catch(e) {
     console.log('errrrrr', e);
   }
