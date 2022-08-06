@@ -1,8 +1,8 @@
 // require('newrelic');
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const path = require('path');
+// const cors = require('cors');
+// const path = require('path');
 // var morgan = require('morgan');
 // const router = require('./router.js');
 const { getAnswersForQ, getQuestions, postQuestion, postAnswer, postPhotos, updateQHelpful, reportQuestion, updateAHelpful, reportAnswer } = require('./models');
@@ -12,13 +12,13 @@ module.exports.app = app;
 
 app.set('port', process.env.PORT);
 // app.use(morgan('dev'));
-app.use(express.json());
+// app.use(express.json());
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-app.options('*', cors());
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
+// app.options('*', cors());
 
 app.get('/loaderio-e95cc048ed6c65972bc72918f4e77489.txt', async (req, res) => {
   try {
